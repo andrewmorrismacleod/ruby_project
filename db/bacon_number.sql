@@ -1,11 +1,11 @@
-DROP TABLE films;
-DROP TABLE actors;
 DROP TABLE castings;
+DROP TABLE actors;
+DROP TABLE films;
 
 CREATE TABLE films
 (
   id SERIAL8 primary key,
-  title VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE actors
