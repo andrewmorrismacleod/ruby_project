@@ -14,13 +14,16 @@ Those actors who have worked directly with Kevin Bacon have a Bacon number of 1.
 If the lowest Bacon number of any actor with whom X has appeared in any movie is N, X's Bacon number is N+1.
 
 #### MVP:
-
-* The app should be able to produce a list of films/actors that connects a specified actor/actress with Kevin Bacon
+* The app should be able to produce:
+*   - a list (not necessarily the most efficient) of films/actors that connects a specified actor/actress with Kevin Bacon.
+*   - the length of this list
 * It should be possible to add (or delete) actors/films to (from) the database via a web interface.
-* Implement Dijkstra's algorithm so that the list produced in point 1 is the shortest possible list and return that number.
+* There should be full CRUD functionality for the following tables: films, actors and castings (linking films and actors)
 
 #### Possible Extensions:
+* Implement Dijkstra's algorithm so that the list produced in point 1 is the shortest possible list and return that number.
 
 * Make the program work so that the length between any two actors can be computed i.e. not just an actor/actress with Kevin Bacon.
 
-* Add additional information that would allow a person's Erdos number to be computed and use this in conjunction with the MVP to find a persons Erdos-Bacon number.
+#### Possible Further Extensions
+* Add additional information that would allow a person's Erdos number to be computed and use this in conjunction with the MVP to find a person's Erdos-Bacon number.
