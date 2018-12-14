@@ -17,4 +17,8 @@ class ActorTest < Minitest::Test
     assert_equal("Pitt", @actor1.last_name)
   end
 
+  def test_full_name
+    assert_equal("Brad Pitt", @actor1.full_name)
+  end
+
 end

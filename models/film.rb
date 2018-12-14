@@ -11,13 +11,11 @@ class Film
 
   def save()
     sql = "INSERT INTO films
-    (
-      title,
-    )
-    VALUES
-    (
-      $1
-    )
+    (title) 
+
+      VALUES
+
+      ($1)
     RETURNING id"
     values = [@title]
     results = SqlRunner.run(sql, values)
