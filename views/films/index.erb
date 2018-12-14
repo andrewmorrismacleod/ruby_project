@@ -1,0 +1,7 @@
+<h1>Films</h1>
+
+<% @films.each do |film| %>
+
+  <a href="/films/<%= film.id %>"><%= film.title %></a><br>
+
+<% end %>
