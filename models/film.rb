@@ -1,5 +1,6 @@
 require_relative( '../db/sql_runner' )
 require_relative ('actor')
+require 'pry'
 
 class Film
 
@@ -35,6 +36,18 @@ class Film
     values = [id]
     results = SqlRunner.run( sql, values )
     return Film.new( results.first )
+  end
+
+  def self.find_by_title(title)
+    sql = "SELECT * FROM films
+    WHERE title = $1"
+    values = [title]
+    results = SqlRunner.run( sql, values )
+    if results.first.nil?
+      return nil
+    else
+      return Film.new( results.first )
+    end
   end
 
   def update

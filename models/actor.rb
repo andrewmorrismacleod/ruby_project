@@ -75,5 +75,17 @@ class Actor
     return results.map { |film| Film.new( film ) }
   end
 
+  def self.find_by_name(first_name, last_name)
+    sql = "SELECT * FROM actors
+    WHERE first_name = $1
+    AND last_name = $2"
+    values = [first_name, last_name]
+    results = SqlRunner.run( sql, values )
+    if results.first.nil?
+      return nil
+    else
+      return Actor.new( results.first )
+    end
+  end
 
 end

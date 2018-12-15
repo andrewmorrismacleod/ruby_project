@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
 require_relative( '../models/actor' )
 require_relative( '../models/casting')
+require_relative( '../models/film')
 also_reload( '../models/*' )
 
 get '/actors' do
@@ -30,4 +31,22 @@ post '/actors/create' do
   actor = Actor.new(params)
   actor.save
   redirect to("/actors")
+end
+
+post "/actors/:actor_id/film/add" do
+  film = Film.find_by_title(params[:title])
+  if film.nil?
+    film = Film.new(params)
+    film.save
+  end
+  actor = Actor.find(params[:actor_id].to_i)
+
+  casting = Casting.find_by_actor_film({'actor_id' => actor.id, 'film_id' => film.id})
+  
+  if casting.nil?
+    casting = Casting.new({'actor_id' => actor.id, 'film_id' => film.id})
+    casting.save
+  end
+
+  redirect to("/actors/#{params[:actor_id]}")
 end

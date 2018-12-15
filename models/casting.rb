@@ -67,4 +67,18 @@ class Casting
     SqlRunner.run( sql, values )
   end
 
+  def self.find_by_actor_film(options)
+    sql = "DELETE FROM castings
+    WHERE actor_id = $1
+    AND film_id = $2"
+    values = [options['actor_id'].to_i, options['film_id'].to_i]
+    SqlRunner.run( sql, values )
+    results = SqlRunner.run(sql, values)
+    if results.first.nil?
+      return nil
+    else
+      return Casting.new( results.first )
+    end
+  end
+
 end
