@@ -25,3 +25,9 @@ post '/films/:film_id/delete' do
   Film.delete(params[:film_id].to_i)
   redirect to("/films")
 end
+
+post '/films/create' do
+  actor = Film.new(params)
+  actor.save
+  redirect to("/films")
+end
