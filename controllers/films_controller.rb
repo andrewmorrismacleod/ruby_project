@@ -2,6 +2,7 @@ require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require( 'pry-byebug' )
 require_relative( '../models/film' )
+require_relative( '../models/casting')
 also_reload( '../models/*' )
 
 get '/films' do

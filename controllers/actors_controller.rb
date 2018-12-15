@@ -20,3 +20,8 @@ post '/actors/:actor_id/:film_id/delete' do
   Casting.delete_by_actor_film_id(params[:actor_id].to_i, params[:film_id].to_i)
   redirect to("/actors/#{params[:actor_id].to_i}")
 end
+
+post '/actors/:actor_id/delete' do
+  Actor.delete(params[:actor_id].to_i)
+  redirect to("/actors")
+end
