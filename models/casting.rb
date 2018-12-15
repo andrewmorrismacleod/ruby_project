@@ -53,9 +53,17 @@ class Casting
   end
 
   def self.delete(id)
-    sql = "DELETE FROM film
+    sql = "DELETE FROM castings
     WHERE id = $1"
     values = [id]
+    SqlRunner.run( sql, values )
+  end
+
+  def self.delete_by_actor_film_id(actor_id, film_id)
+    sql = "DELETE FROM castings
+    WHERE actor_id = $1
+    AND film_id = $2"
+    values = [actor_id, film_id]
     SqlRunner.run( sql, values )
   end
 

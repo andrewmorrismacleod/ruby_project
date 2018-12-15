@@ -11,7 +11,7 @@ class Film
 
   def save()
     sql = "INSERT INTO films
-    (title) 
+    (title)
 
       VALUES
 
@@ -50,7 +50,7 @@ class Film
   end
 
   def self.delete(id)
-    sql = "DELETE FROM film
+    sql = "DELETE FROM films
     WHERE id = $1"
     values = [id]
     SqlRunner.run( sql, values )
