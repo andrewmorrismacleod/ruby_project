@@ -25,3 +25,9 @@ post '/actors/:actor_id/delete' do
   Actor.delete(params[:actor_id].to_i)
   redirect to("/actors")
 end
+
+post '/actors/create' do
+  actor = Actor.new(params)
+  actor.save
+  redirect to("/actors")
+end
