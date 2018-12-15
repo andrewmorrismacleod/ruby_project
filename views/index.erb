@@ -1,1 +1,14 @@
 <h1>BACON</h1>
+
+<form action="/generator" method="post">
+<td>
+  <input type='text' name = "current_vertex">
+</td>
+<td>
+  <input type='submit' value="Find Bacon Number">
+</td>
+</form><br><br>
+
+<% if @game_run == true %>
+  <p> Game Run <p>
+<% end %>
