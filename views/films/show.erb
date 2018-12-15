@@ -17,4 +17,15 @@
   </tr>
 
 <% end %>
+
+<tr>
+  <form action="/films/<%= @film.id %>/actor/add" method="post">
+  <td>
+    <input type='text' name = "first_name"><input type='text' name = "last_name">
+  </td>
+  <td>
+    <input type='submit' value="Add Actor">
+  </td>
+  </form>
+</tr>
 </table>

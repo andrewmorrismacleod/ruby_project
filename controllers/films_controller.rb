@@ -31,3 +31,21 @@ post '/films/create' do
   actor.save
   redirect to("/films")
 end
+
+post "/films/:film_id/actor/add" do
+  actor = Actor.find_by_name(params[:first_name], params[:last_name])
+  if actor.nil?
+    actor = Actor.new(params)
+    actor.save
+  end
+  film = Film.find(params[:film_id].to_i)
+
+  casting = Casting.find_by_actor_film({'actor_id' => actor.id, 'film_id' => film.id})
+
+  if casting.nil?
+    casting = Casting.new({'actor_id' => actor.id, 'film_id' => film.id})
+    casting.save
+  end
+
+  redirect to("/films/#{params[:film_id]}")
+end
