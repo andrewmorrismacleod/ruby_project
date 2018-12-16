@@ -1,4 +1,6 @@
 require_relative( '../db/sql_runner' )
+require_relative( 'actor')
+require_relative( 'film' )
 
 class Link
 
@@ -6,9 +8,9 @@ class Link
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
-    @current_vertex = options['current_vertex'].to_i
-    @link = options['edge'].to_i
-    @next_vertex = options['next_vertex'].to_i
+    @current_vertex = Actor.find(options['current_vertex'].to_i)
+    @link = Film.find(options['edge'].to_i)
+    @next_vertex = Actor.find(options['next_vertex'].to_i)
   end
 
   def self.all()
@@ -25,5 +27,7 @@ class Link
     results = SqlRunner.run( sql )
     return results.map { |link| Link.new( link ) }
   end
+
+
 
 end

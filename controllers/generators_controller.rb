@@ -10,9 +10,9 @@ also_reload( '../models/*' )
 
 post '/generator' do
   @links = Link.all
-  p @links[0]
   @game_run = true
   @path = optimiser_brute_force(@links, params[:first_name], params[:last_name])
+  @name_check = "Kevin Bacon"
   erb(:index)
   #redirect to('/')
 end

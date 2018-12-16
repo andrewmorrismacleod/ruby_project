@@ -10,7 +10,18 @@
 </form><br><br>
 
 <% if @game_run == true %>
-  <p> Game Run <p>
 
-    <%= @path %>
+  <% if @path == @name_check %>
+    <p><%= @path %></p>
+  <% else %>
+    <% @path.each_with_index do |link,index| %>
+      <% if index == 0 %>
+        <p> <%= link.current_vertex.full_name %> was in <%= link.link.title %> with </p>
+      <% else %>
+        <p> <%= link.current_vertex.full_name %> who was in <%= link.link.title %> with </p>
+      <% end %>
+    <% end %>
+    <%= @path.last.next_vertex.full_name %>
+  <% end %>
+
 <% end %>
