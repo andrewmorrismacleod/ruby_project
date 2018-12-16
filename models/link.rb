@@ -6,9 +6,9 @@ class Link
 
   def initialize( options )
     @id = options['id'].to_i if options['id']
-    @current_vertex = options['actor_id'].to_i
-    @link = options['actor_id'].to_i
-    @next_vertex = options['actor_id'].to_i
+    @current_vertex = options['current_vertex'].to_i
+    @link = options['edge'].to_i
+    @next_vertex = options['next_vertex'].to_i
   end
 
   def self.all()
@@ -20,7 +20,7 @@ class Link
     	ON left_table.film_id = right_table.film_id) a
 
     WHERE a.current_vertex != a.next_vertex
-    ORDER BY current_vertex ASC"
+    ORDER BY current_vertex ASC, next_vertex ASC"
 
     results = SqlRunner.run( sql )
     return results.map { |link| Link.new( link ) }
