@@ -28,8 +28,11 @@ post '/actors/:actor_id/delete' do
 end
 
 post '/actors/create' do
-  actor = Actor.new(params)
-  actor.save
+  actor = Actor.find_by_name(params[:first_name], params[:last_name])
+  if actor.nil?
+    actor = Actor.new(params)
+    actor.save
+  end
   redirect to("/actors")
 end
 
@@ -42,7 +45,7 @@ post "/actors/:actor_id/film/add" do
   actor = Actor.find(params[:actor_id].to_i)
 
   casting = Casting.find_by_actor_film({'actor_id' => actor.id, 'film_id' => film.id})
-  
+
   if casting.nil?
     casting = Casting.new({'actor_id' => actor.id, 'film_id' => film.id})
     casting.save

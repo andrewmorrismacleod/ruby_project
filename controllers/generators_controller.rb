@@ -11,7 +11,10 @@ also_reload( '../models/*' )
 post '/generator' do
   @links = Link.all
   @game_run = true
-  @path = optimiser_brute_force(@links, params[:first_name], params[:last_name])
+  # @path = optimiser_brute_force(@links, params[:first_name], params[:last_name])
+  @path = optimiser_dijkstra(@links, params[:first_name], params[:last_name])
+  # @path = generate_path(@dijkstra, params[:first_name], params[:last_name])
+
   @name_check = "Kevin Bacon"
   erb(:index)
   #redirect to('/')

@@ -12,7 +12,7 @@ actor_hash_array.push({'first_name' => 'Halle', 'last_name' => 'Berry'})
 actor_hash_array.push({'first_name' => 'Samuel L.', 'last_name' => 'Jackson'})
 actor_hash_array.push({'first_name' => 'Kevin', 'last_name' => 'Bacon'})
 actor_hash_array.push({'first_name' => 'Nicholas', 'last_name' => 'Cage'})
-actor_hash_array.push({'first_name' => 'Arnold', 'last_name' => 'Schwartzenegger'})
+actor_hash_array.push({'first_name' => 'Arnold', 'last_name' => 'Schwarzenegger'})
 actor_hash_array.push({'first_name' => 'Denise', 'last_name' => 'Richards'})
 
 actor_hash_array.each{ |actor_hash| actor_class_array.push(Actor.new(actor_hash))}

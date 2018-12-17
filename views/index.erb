@@ -12,8 +12,13 @@
 <% if @game_run == true %>
 
   <% if @path == @name_check %>
-    <p><%= @path %></p>
+
+  <p>You have entered the same names for both the start and target - that person's "Bacon" number is zero</p>
+
   <% else %>
+
+    <p> <% @path.first.current_vertex.full_name %> <% @p %></p>
+
     <% @path.each_with_index do |link,index| %>
       <% if index == 0 %>
         <p> <%= link.current_vertex.full_name %> was in <%= link.link.title %> with </p>

@@ -27,8 +27,11 @@ post '/films/:film_id/delete' do
 end
 
 post '/films/create' do
-  actor = Film.new(params)
-  actor.save
+  film = Film.find_by_title(params[:title])
+  if film.nil?
+    film = Film.new(params)
+    film.save
+  end
   redirect to("/films")
 end
 
