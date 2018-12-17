@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+    <link rel = "stylesheet" type="text/css" href="navigation.css">
+    <link rel = "stylesheet" type="text/css" href="buttons.css">
+    <link rel = "stylesheet" type="text/css" href="links.css">
   </head>
 
   <body>
     <main>
-
       <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a><br>
-          </li>
-          <li>
-            <a href="/actors">Actors</a><br>
-          </li>
-          <li>
-            <a href="/films">Films</a><br>
-          </li>
-        </ul>
+        <div class="nav_container">
+        <a class="a_box" href="/"><div class="nav_box">Home Page</div></a>
+        <a class="a_box" href="/actors"><div class="nav_box">Actors</div></a>
+        <a class="a_box" href="/films"><div class="nav_box">Films</div></a>
+        </div>
       </nav>
-
       <section>
         <%= yield %>
       </section>

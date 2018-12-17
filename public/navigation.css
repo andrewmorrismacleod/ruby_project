@@ -1,0 +1,44 @@
+.nav_container{
+  background-color: orange;
+  display: grid;
+  padding:0.5em;
+  grid-template-columns: auto auto auto;
+}
+
+.nav_box{
+  background-color: green;
+  color: white;
+  height: 3em;
+  line-height: 3em;
+  text-align: center;
+  vertical-align: center;
+  text-decoration: none;
+}
+.nav_box:hover{
+  background-color: lime;
+}
+
+body {
+
+  background-color: black;
+  color: white;
+
+}
+
+.base_image {
+  background-image: url('./kevin_bacon.jpeg')
+}
+
+.bacon_container {
+  position: relative;
+  text-align: center;
+  color: cyan;
+  font-size: 3em;
+}
+
+.centered {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

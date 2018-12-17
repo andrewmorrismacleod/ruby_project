@@ -7,17 +7,18 @@
       <a href="/actors/<%= actor.id %>"><%= actor.full_name %></a><br>
     </td>
     <td>
-      <form action="/actors/<%= actor.id %>/delete" method="post"><input class="hhuh" type='submit' value="Delete"></form>
+      <form action="/actors/<%= actor.id %>/delete" method="post"><input class="button_add" type='submit' value="Delete"></form>
     </td>
   </tr>
   <% end %>
   <tr>
     <form action="/actors/create" method="post">
     <td>
-      <input type='text' name = "first_name"><input type='text' name = "last_name">
+      <label class="label_field" for="first-name"><input type='text' name="first_name" id="first-name" value="First name"><br>
+      <label class="label_field" for="last-name"><input type='text' name="last_name" id="last-name" value = "Last name">
     </td>
     <td>
-      <input type='submit' value="Add Actor">
+      <input class="button_delete" type='submit' value="Add Actor">
     </td>
     </form>
   </tr>

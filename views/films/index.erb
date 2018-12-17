@@ -6,7 +6,7 @@
 <% @films.each do |film| %>
 <tr>
   <td>
-    <a href="/films/<%= film.id %>"><%= film.title %></a><br>
+    <a class="link_text" href="/films/<%= film.id %>"><%= film.title %></a><br>
   </td>
   <td>
     <form action="/films/<%= film.id %>/delete" method="post"><input class="hhuh" type='submit' value="Delete"></form>

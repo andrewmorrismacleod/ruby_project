@@ -1,32 +1,44 @@
+<center>
+
 <h1>BACON</h1>
 
 <form action="/generator" method="post">
-<td>
-  <input type='text' name = "first_name"><input type='text' name = "last_name">
-</td>
-<td>
+  <input type='text' name = "first_name"><br>
+  <input type='text' name = "last_name"><br>
   <input type='submit' value="Find Bacon Number">
-</td>
 </form><br><br>
+</center>
+
 
 <% if @game_run == true %>
 
   <% if @path == @name_check %>
 
-  <p>You have entered the same names for both the start and target - that person's "Bacon" number is zero</p>
+    <p>You have entered the same names for both the start and target - that person's "Bacon" number is zero</p>
 
   <% else %>
 
-    <p> <% @path.first.current_vertex.full_name %> <% @p %></p>
+    <div class="bacon_container">
+      <img class="base_image" src="kevin_bacon.jpeg">
+      <div class="centered"><%= @path.length %></div>
+    </div>
 
-    <% @path.each_with_index do |link,index| %>
-      <% if index == 0 %>
-        <p> <%= link.current_vertex.full_name %> was in <%= link.link.title %> with </p>
-      <% else %>
-        <p> <%= link.current_vertex.full_name %> who was in <%= link.link.title %> with </p>
-      <% end %>
-    <% end %>
-    <%= @path.last.next_vertex.full_name %>
+    <br><br><br>
+
+    <div><center>
+
+      <p><% @path.first.current_vertex.full_name %> <% @p %></p>
+
+        <% @path.each_with_index do |link,index| %>
+          <% if index == 0 %>
+            <p> <%= link.current_vertex.full_name %> was in <%= link.link.title %> with </p>
+          <% else %>
+            <p> <%= link.current_vertex.full_name %> who was in <%= link.link.title %> with </p>
+          <% end %>
+        <% end %>
+
+      <p><%= @path.last.next_vertex.full_name %></p>
+    </center></div>
+
   <% end %>
-
 <% end %>
