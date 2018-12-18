@@ -1,33 +1,30 @@
 <h1><%= @actor.full_name %></h1>
 
-<h1><%= @actor.id %></h1>
-
 <p>List of Films</p><br>
 
 <table>
 
-<% @actor_films.each do |film| %>
+  <% @actor_films.each do |film| %>
+    <tr>
+      <td>
+        <p> <%= film.title %> </p>
+      </td>
+      <td>
+        <form action="/actors/<%= @actor.id %>/<%= film.id %>/delete" method="post"><input class="hhuh" type='submit' value="Delete"></form>
+      </td>
+    </tr>
+  <% end %>
+
   <tr>
+    <form action="/actors/<%= @actor.id %>/film/add" method="post">
     <td>
-      <p> <%= film.title %> </p>
+      <input type='text' name = "title">
     </td>
     <td>
-      <form action="/actors/<%= @actor.id %>/<%= film.id %>/delete" method="post"><input class="hhuh" type='submit' value="Delete"></form>
+      <input type='submit' value="Add Film">
     </td>
+    </form>
   </tr>
-
-<% end %>
-
-<tr>
-  <form action="/actors/<%= @actor.id %>/film/add" method="post">
-  <td>
-    <input type='text' name = "title">
-  </td>
-  <td>
-    <input type='submit' value="Add Film">
-  </td>
-  </form>
-</tr>
 
 
 

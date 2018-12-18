@@ -4,7 +4,7 @@ require( 'pry-byebug' )
 require_relative( '../models/actor' )
 require_relative( '../models/casting')
 require_relative( '../models/film')
-also_reload( '../models/*' )
+also_reload( './*' )
 
 get '/actors' do
   @actors = Actor.all

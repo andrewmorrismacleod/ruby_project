@@ -4,10 +4,10 @@
   <% @actors.each do |actor| %>
   <tr>
     <td>
-      <a href="/actors/<%= actor.id %>"><%= actor.full_name %></a><br>
+      <a class="link_text" href="/actors/<%= actor.id %>"><%= actor.full_name %></a><br>
     </td>
     <td>
-      <form action="/actors/<%= actor.id %>/delete" method="post"><input class="button_add" type='submit' value="Delete"></form>
+      <form action="/actors/<%= actor.id %>/delete" method="post"><input class="button_add" type="submit" value="Delete"></form>
     </td>
   </tr>
   <% end %>

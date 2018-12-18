@@ -1,50 +1,55 @@
-<center>
+<center><h1>The Six Degress of Kevin Bacon (or whoever)</h1></center>
 
-<h1>The Six Degress of Kevin Bacon (or whoever)</h1>
+<div class="main_page">
 
-<p>
-The Six Degrees of Kevin...
-</p>
+  <p>
+  The Six Degrees of Kevin Bacon is a game which is based on a variation of the observed phenomenon known as "The Six Degrees of Separation"
+  This phenomena states that the average "connectedness" of a sufficiently large collection of interconnected objects is 6.
 
-<form action="/generator" method="post">
-  <label for="first_name">First name</label>
-  <input type="text" name="first_name" id="first_name">
-  <label for="first_name">Last name</label>
-  <input type="text" name="last_name">
-  <input type="submit" value="Find Bacon Number">
-</form><br><br>
-</center>
+  In this version the objects are actors and the connections between them are determined by films that any pair of actors have starred in together.
+  </p>
 
+  <form action="/generator" method="post">
+    <label for="first-name">First name</label>
+    <input type="text" name="first_name" id="first-name">
+    <label for="last-name">Last name</label>
+    <input type="text" name="last_name" id="last-name"><br><br>
+    <label for="first-name-second-actor">First name</label>
+    <input type="text" name="first_name_second_actor" value="Kevin" id="first-name-second-actor">
+    <label for="second-name-second-actor">Last name</label>
+    <input type="text" name="last_name_second_actor" value="Bacon" id="last-name-second-actor">
+    <input type="submit" value="Find Bacon Number">
+  </form>
 
-<% if @game_run == true %>
+  <br><br>
 
-  <% if @path == @name_check %>
+  <% if @game_run == true %>
+    <% if @path == @name_check %>
+      <p>You have entered the same names for both the start and target - that person's "Bacon" number is zero</p>
+    <% else %>
+      <div class="bacon_container">
+        <img class="base_image" src="kevin_bacon.jpeg">
+        <div class="centered"><%= @path.length %></div>
+      </div>
 
-    <p>You have entered the same names for both the start and target - that person's "Bacon" number is zero</p>
+      <br>
 
-  <% else %>
+      <div>
 
-    <div class="bacon_container">
-      <img class="base_image" src="kevin_bacon.jpeg">
-      <div class="centered"><%= @path.length %></div>
-    </div>
+        <p><% @path.first.current_vertex.full_name %></p>
 
-    <br><br><br>
-
-    <div><center>
-
-      <p><% @path.first.current_vertex.full_name %> <% @p %></p>
-
-        <% @path.each_with_index do |link,index| %>
-          <% if index == 0 %>
-            <p> <%= link.current_vertex.full_name %> was in <%= link.link.title %> with </p>
-          <% else %>
-            <p> <%= link.current_vertex.full_name %> who was in <%= link.link.title %> with </p>
+          <% @path.each_with_index do |link,index| %>
+            <% if index == 0 %>
+              <p> <div class="game_box_actor"><%= link.current_vertex.full_name %></div> was in <div class="game_box_film"><%= link.link.title %> </div> with </p>
+            <% else %>
+              <p> <div class="game_box_actor"><%= link.current_vertex.full_name %></div> who was in <div class="game_box_film"><%= link.link.title %></div> with </p>
+            <% end %>
           <% end %>
-        <% end %>
 
-      <p><%= @path.last.next_vertex.full_name %></p>
-    </center></div>
+        <p><div class="game_box_actor"><%= @path.last.next_vertex.full_name %></div></p>
+      </div>
 
+    <% end %>
   <% end %>
-<% end %>
+
+</div>
