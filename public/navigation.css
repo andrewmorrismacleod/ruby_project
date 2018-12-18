@@ -19,20 +19,23 @@
 }
 
 body {
-
-  background-color: black;
-  color: white;
-
+  background-color: #112F41;
+  color: #ED553B;
 }
 
 .base_image {
   background-image: url('./kevin_bacon.jpeg')
 }
 
+.a_box {
+text-decoration: none;
+
+}
+
 .bacon_container {
   position: relative;
   text-align: center;
-  color: cyan;
+
   font-size: 3em;
 }
 
@@ -41,4 +44,5 @@ body {
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: black;
 }
