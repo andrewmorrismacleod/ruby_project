@@ -1,26 +1,30 @@
-<h1>Actors</h1>
 
-<table>
-  <% @actors.each do |actor| %>
-  <tr>
-    <td>
-      <a class="link_text" href="/actors/<%= actor.id %>"><%= actor.full_name %></a><br>
-    </td>
-    <td>
-      <form action="/actors/<%= actor.id %>/delete" method="post"><input class="button_add" type="submit" value="Delete"></form>
-    </td>
-  </tr>
-  <% end %>
-  <tr>
-    <form action="/actors/create" method="post">
-    <td>
-      <label class="label_field" for="first-name">First name</label>
-        <input type='text' name="first_name" id="first-name"><br>
-      <label class="label_field" for="last-name"><input type='text' name="last_name" id="last-name" value = "Last name">
-    </td>
-    <td>
-      <input class="button_delete" type='submit' value="Add Actor">
-    </td>
-    </form>
-  </tr>
-</table>
+
+  <center><h1>Actors</h1></center>
+
+
+
+  <table>
+    <% @actors.each do |actor| %>
+    <tr class="actor_list">
+      <td>
+        <a class="link_text" href="/actors/<%= actor.id %>"><%= actor.full_name %></a><br>
+      </td>
+      <td>
+        <form action="/actors/<%= actor.id %>/delete" method="post"><input class="button_add" type="submit" value="Delete"></form>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <form action="/actors/create" method="post"  class="actor_list">
+      <td>
+        <label class="label_field" for="first-name">First name</label>
+          <input type='text' name="first_name" id="first-name"><br>
+        <label class="label_field" for="last-name"><input type='text' name="last_name" id="last-name" value = "Last name">
+      </td>
+      <td>
+        <input class="button_delete" type='submit' value="Add Actor">
+      </td>
+      </form>
+    </tr>
+  </table>

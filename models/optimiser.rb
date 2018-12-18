@@ -7,7 +7,7 @@ def optimiser_brute_force(network, first_name, last_name)
 
   #Define start and end vertices
   p start_vertex = Actor.find_by_name(first_name, last_name).id
-  p final_vertex = Actor.find_by_name("Kevin", "Bacon").id
+  p final_vertex = Actor.find_by_name(first_name_second_actor, last_name_second_actor).id
 
   #Set the initial value of the current vertex to be equal to the starting vertex
   #Add the initial value to the path array
@@ -70,7 +70,8 @@ def optimiser_brute_force(network, first_name, last_name)
   end
 end
 
-def optimiser_dijkstra(network, first_name, last_name)
+# def optimiser_dijkstra(network, first_name, last_name)
+def optimiser_dijkstra(network, first_name, last_name, first_name_second_actor, last_name_second_actor)
 # function Dijkstra(Graph, source):
 #  2
 #  3      create vertex set Q
@@ -81,7 +82,8 @@ def optimiser_dijkstra(network, first_name, last_name)
   source_id = Actor.find_by_name(first_name,last_name).id
 
   #Find the number of the vertex which represents the destination actor
-  destination_id = Actor.find_by_name("Kevin", "Bacon").id
+  #destination_id = Actor.find_by_name("Kevin", "Bacon").id
+    destination_id = Actor.find_by_name(first_name_second_actor, last_name_second_actor).id
 
   distance = {}
   queue = {}
@@ -100,8 +102,8 @@ def optimiser_dijkstra(network, first_name, last_name)
     queue[actor.id.to_s.to_sym] = distance[actor.id.to_s.to_sym]
 
   end
-  output_network = []
 
+  output_network = []
   parent_vertex = []
 
   while !queue.empty? && (count < 1000)
@@ -124,7 +126,6 @@ def optimiser_dijkstra(network, first_name, last_name)
     end
   end
 
-
   p parent_vertex
   current_vertex = destination_id
   while current_vertex != source_id
@@ -141,63 +142,7 @@ def optimiser_dijkstra(network, first_name, last_name)
 
   output_network.reverse!
 
-# output_network.each do |link|
-#   p link
-# end
-
   p output_network
-return output_network
+  return output_network
  #At this point the distance hash contains
-
-
-
 end
-
-# def generate_path(network, first_name, last_name)
-#
-#
-#
-#   start_vertex = Actor.find_by_name(first_name, last_name).id
-#   final_vertex = Actor.find_by_name("Kevin", "Bacon").id
-#
-#   current_vertex = start_vertex
-#
-#   previous_vertex = 0
-#
-#   bacon_path = [start_vertex]
-#
-#   current_link = 0
-#
-#   count = 0
-#
-#   while current_vertex != final_vertex && count < 20 do
-#
-#     count += 1
-#     bacon_path = []
-#     next_vertex_found = false
-#     network.each do |link|
-#
-#
-#       #If the current link has a vertex that matches
-#       if link.current_vertex.id == current_vertex && !bacon_path.include?(current_link.next_vertex.id)
-#         p link
-#         bacon_path.push(link)
-#         next_vertex_found = true  #Flag that we have found the next vertex
-#         current_vertex = link.next_vertex.id  #Update the current vertex for the next pass
-#         previous_vertex = link.current_vertex.id
-#         break
-#       end
-#
-#     end
-#
-#     #If the next vertex couldn't be found
-#     if !next_vertex_found
-#       current_vertex = previous_vertex
-#       network.delete(current_link)
-#     end
-#
-#   end
-#
-#   return bacon_path
-#
-# end
