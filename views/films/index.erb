@@ -1,30 +1,29 @@
-<div class="main_page">
+<div class="actors_films_page">
 
-<center><h1>Films</h1></center>
+  <center><h1>Films</h1></center>
 
+  <table>
+    <% @films.each do |film| %>
+    <tr>
+      <td>
+        <a class="link_text" href="/films/<%= film.id %>"><%= film.title %></a><br>
+      </td>
+      <td>
+        <form action="/films/<%= film.id %>/delete" method="post"><input class="button_add" type='submit' value="Delete"></form>
+      </td>
+    </tr>
+    <% end %>
 
+    <tr>
+      <form action="/films/create" method="post">
+      <td>
+        <input type='text' name = "title">
+      </td>
+      <td>
+        <input class="button_delete" type='submit' value="Add Film">
+      </td>
+      </form>
+    </tr>
 
-<table>
-<% @films.each do |film| %>
-<tr>
-  <td>
-    <a class="link_text" href="/films/<%= film.id %>"><%= film.title %></a><br>
-  </td>
-  <td>
-    <form action="/films/<%= film.id %>/delete" method="post"><input class="hhuh" type='submit' value="Delete"></form>
-  </td>
-</tr>
-<% end %>
-
-<tr>
-  <form action="/films/create" method="post">
-  <td>
-    <input type='text' name = "title">
-  </td>
-  <td>
-    <input type='submit' value="Add Film">
-  </td>
-  </form>
-</tr>
-</table>
+  </table>
 </div>

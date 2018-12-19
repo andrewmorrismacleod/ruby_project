@@ -6,15 +6,19 @@ require_relative( '../models/casting')
 require_relative( '../models/film')
 require_relative( '../models/link')
 require_relative( '../models/optimiser')
-also_reload( '../models/*' )
+also_reload( './*' )
 
 post '/generator' do
   @links = Link.all
   @game_run = true
-  # @path = optimiser_brute_force(@links, params[:first_name], params[:last_name])
-  @path = optimiser_dijkstra(@links, params[:first_name], params[:last_name], params[:first_name_second_actor], params[:last_name_second_actor])
+  if Actor.find_by_name(params[:first_name],params[:last_name]) == nil
+    @path = "Start actor is not in the database!"
+  elsif Actor.find_by_name(params[:first_name_second_actor],params[:last_name_second_actor]) == nil
+    @path = "End actor is not in the database!"
+  else
+    @path = optimiser_dijkstra(@links, params[:first_name], params[:last_name], params[:first_name_second_actor], params[:last_name_second_actor])
+  end
 
-  @name_check = "Kevin Bacon"
+  @name_check = "#{params[:first_name_second_actor]} #{params[:last_name_second_actor]}"
   erb(:index)
-  #redirect to('/')
 end

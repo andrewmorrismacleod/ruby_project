@@ -10,10 +10,12 @@
   </p>
 
   <form action="/generator" method="post">
+    <u><p>Start Actor</p></u>
     <label for="first-name">First name</label>
     <input type="text" name="first_name" id="first-name">
     <label for="last-name">Last name</label>
     <input type="text" name="last_name" id="last-name"><br><br>
+    <u><p>End Actor</p></u>
     <label for="first-name-second-actor">First name</label>
     <input type="text" name="first_name_second_actor" value="Kevin" id="first-name-second-actor">
     <label for="second-name-second-actor">Last name</label>
@@ -24,8 +26,12 @@
   <br><br>
 
   <% if @game_run == true %>
-    <% if @path == @name_check %>
+    <% if @path == [] %>
       <p>You have entered the same names for both the start and target - that person's "Bacon" number is zero</p>
+    <% elsif @path == "Start actor is not in the database!"%>
+      <p> <%= @path %></p>
+    <% elsif @path == "End actor is not in the database!"%>
+      <p> <%= @path %></p>
     <% else %>
       <div class="bacon_container">
         <img class="base_image" src="kevin_bacon.jpeg">

@@ -1,31 +1,69 @@
-<h1><%= @film.title %></h1>
+<center><h1><%= @film.title %></h1></center>
+<center><p>List of actors</p></center>
 
-<h1><%= @film.id %></h1>
+<div class="actors_films_page">
 
-<p>List of Actors</p><br>
+  <table>
 
-<table>
+  <% @film_actors.each do |actor| %>
+    <tr>
+      <td>
+        <a class="link_text" href="/actors/<%= actor.id %>"><%= actor.full_name %></a>
+      </td>
+      <td>
+        <form action="/films/<%= @film.id %>/<%= actor.id %>/delete" method="post"><input class="button_add" type='submit' value="Delete"></form>
+      </td>
+    </tr>
 
-<% @film_actors.each do |actor| %>
+  <% end %>
+
+  
+
   <tr>
+    <br><br>
     <td>
-      <p> <%= actor.full_name %> </p>
-    </td>
-    <td>
-      <form action="/films/<%= @film.id %>/<%= actor.id %>/delete" method="post"><input class="hhuh" type='submit' value="Delete"></form>
+      <u><p>Add actor</p></u>
     </td>
   </tr>
+  <tr>
+    <form action="/films/<%= @film.id %>/actor/add" method="post">
+    <td>
+      <label class="label_field" for="first-name">First name</label>
+    <td>
+  </tr>
+  <tr>
+    <td>
+        <input type='text' name="first_name" id="first-name"></input>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label class="label_field" for="last-name">Last name</label>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <input type='text' name="last_name" id="last-name">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input class="button_delete" type='submit' value="Add Actor">
+    </td>
+    </form>
+  </tr>
 
-<% end %>
 
-<tr>
-  <form action="/films/<%= @film.id %>/actor/add" method="post">
-  <td>
-    <input type='text' name = "first_name"><input type='text' name = "last_name">
-  </td>
-  <td>
-    <input type='submit' value="Add Actor">
-  </td>
-  </form>
-</tr>
-</table>
+
+
+
+
+
+
+
+
+
+
+  </table>
+
+</div>

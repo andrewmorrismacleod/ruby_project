@@ -28,6 +28,4 @@ class Link
     return results.map { |link| Link.new( link ) }
   end
 
-
-
 end
